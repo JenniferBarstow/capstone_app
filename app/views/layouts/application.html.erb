@@ -8,6 +8,12 @@
 </head>
 <body>
 
+	<% if current_user %>
+		<%= "Logged in as #{current_user.full_name}" %>
+		<%= link_to "Sign Out", sign_out_path %>
+	<% else %>
+	<% end %>
+
 	<%= flash[:notice] %>
 
 <%= yield %>

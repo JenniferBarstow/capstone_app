@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
 	def index
+		@users = User.all
+		@classrooms = Classroom.all
+		@quizzes = Quiz.all
 	end
 	
 	def create

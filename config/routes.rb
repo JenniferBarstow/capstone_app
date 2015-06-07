@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
    root 'welcome#index'
    resources :users
-   resources :classes
+   resources :classrooms
+   resources :quizzes
 
    get 'sign-in', to: 'authentication#new'
    post 'sign-in', to: 'authentication#create'

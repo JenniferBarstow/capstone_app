@@ -12,7 +12,7 @@ class ClassroomsController < ApplicationController
 		@classroom = Classroom.new(classroom_params)
 		if @classroom.save
 			flash[:notice] = "New Classroom Added!"
-			redirect_to users_path
+			redirect_to teachers_path
 		else
 			render :new
 		end

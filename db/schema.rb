@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607150452) do
+ActiveRecord::Schema.define(version: 20150609214725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20150607150452) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invites", id: false, force: :cascade do |t|
+    t.integer  "classroom_id", null: false
+    t.integer  "student_id",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "invites", ["classroom_id", "student_id"], name: "index_invites_on_classroom_id_and_student_id", using: :btree
+  add_index "invites", ["student_id", "classroom_id"], name: "index_invites_on_student_id_and_classroom_id", using: :btree
+
   create_table "quizzes", force: :cascade do |t|
     t.string   "question"
     t.string   "answer"
@@ -29,7 +39,15 @@ ActiveRecord::Schema.define(version: 20150607150452) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "students", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.string   "first_name"

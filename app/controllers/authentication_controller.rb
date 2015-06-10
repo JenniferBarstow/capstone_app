@@ -4,13 +4,13 @@ class AuthenticationController < ApplicationController
 	end
 
 	def create
-		@user = User.find_by(email: params[:email])
-		if @user && @user.authenticate(params[:password])
-			session[:user_id] = @user.id
-			redirect_to users_path
+		@teacher = Teacher.find_by(email: params[:email])
+		if @teacher && @teacher.authenticate(params[:password])
+			session[:user_id] = @teacher.id
+			redirect_to teachers_path
 			flash[:notice] = "You have successfully signed in!"
 		else 
-			render :new
+			redirect_to root_path
 		end
 	end
 

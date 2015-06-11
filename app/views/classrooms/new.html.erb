@@ -1,9 +1,16 @@
+<div class='col-md-4 col-md-offset-4'>
+	<h2 class='page-header'>Create a New Classroom</h2>
+</div>
 
-<%= form_for @classroom do |f| %>
+<div class='col-md-4 col-md-offset-4 well well-secondary'>
+	<%= form_for @classroom do |f| %>
+		<div class="form-group">
+				<%= f.label :name, "Classroom Name" %>
+				<%= f.text_field :name, class: "form-control" %>
+		</div>
 
-	<%= f.label :name, "Classroom Name" %>
-	<%= f.text_field :name %>
-
-	<%= f.submit "Add Classroom" %>
-
-<% end %>
+		<div class="form-group">
+			<%= f.submit "Add Classroom", class: "btn btn-primary" %>
+		</div>
+	<% end %>
+</div>

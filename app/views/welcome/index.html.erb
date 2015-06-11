@@ -1,29 +1,56 @@
-<%= form_for @teacher do |f| %>
+<div class="row">
+	<div class="jumbotron col-md-8 col-md-offset-2">
+		<h1>Quiz Racer</h1>
+		<p>Answer questions and shit like that</p>
+		<button class='btn btn-primary'>Sign Up</button>
 
-	<%= f.label :first_name %>
-	<%= f.text_field :first_name %>
+		<button class='btn btn-secondary'>Sign In</button>
+	</div>
+</div>
 
-	<%= f.label :last_name %>
-	<%= f.text_field :last_name %>
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<%= form_for @teacher do |f| %>
+				<div class="form-group">
+					<%= f.label :first_name %>
+					<%= f.text_field :first_name %>
+				</div>
 
-	<%= f.label :email %>
-	<%= f.email_field :email %>
+				<div class="form-group">
+					<%= f.label :last_name %>
+					<%= f.text_field :last_name %>
+				</div>
 
-	<%= f.label :password %>
-	<%= f.password_field :password %>
+				<div class="form-group">
+					<%= f.label :email %>
+					<%= f.email_field :email %>
+				</div>
 
-	<%= f.submit "Register" %>
-<% end %>
-</br>
 
-<%= form_tag sign_in_path do %>
+				<div class="form-group">
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+				</div>
 
-	<%= label_tag :email %>
-	<%= email_field_tag :email %>
+				<%= f.submit "Register", class:'btn btn-primary' %>
+			<% end %>
+		</div>
+	</div>
 
-	<%= label_tag :password %>
-	<%= password_field_tag :password %>
+	<div class="col-md-6">
+		<div class="well">
+			<%= form_tag sign_in_path do %>
+				<div class="form-group">
+					<%= label_tag :email %>
+					<%= email_field_tag :email %>
+				</div>
 
-	<%= submit_tag "Sign In" %>
-
-<% end %>
+				<div class="form-group">
+					<%= label_tag :password %>
+					<%= password_field_tag :password %>
+				</div>
+				<%= submit_tag "Sign In", class:'btn btn-secondary' %>
+			<% end %>
+		</div>
+	</div>

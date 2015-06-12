@@ -18,6 +18,10 @@ class ClassroomsController < ApplicationController
 		end
 	end
 
+	def edit
+		@classroom = Classroom.find(params[:id])
+	end
+
 	private
 
 	def classroom_params

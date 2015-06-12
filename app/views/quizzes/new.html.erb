@@ -1,11 +1,17 @@
-<%= form_for @quiz do |f| %>
 
-	<%= f.label :question %>
-	<%= f.text_field :question %>
+<div class="well well-lg">
+	<%= form_for @quiz do |f| %>
 
-	<%= f.label :answer %>
-	<%= f.text_field :answer %>
+		<%= f.label :question %>
+		<%= f.text_field :question %>
 
-	<%= f.submit "Add question" %>
+		<%= f.label :answer %>
+		<%= f.text_field :answer %>
 
-<% end %>
+		<%= f.label :classroom_id, "Classroom" %>
+		<%= f.collection_select :classroom_id, Classroom.all, :id, :name %>
+
+		<%= f.submit "Add question" ,class:'btn btn-primary' %>
+
+	<% end %>
+</div>

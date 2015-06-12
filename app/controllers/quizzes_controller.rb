@@ -1,7 +1,13 @@
 class QuizzesController < ApplicationController
 
+	def index
+		@quizzes = Quiz.all
+		@classroom = Classroom.all
+	end
+	
 	def new
 		@quiz = Quiz.new
+		@classroom = Classroom.new
 	end
 
 	def create

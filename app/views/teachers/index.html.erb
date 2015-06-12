@@ -1,9 +1,16 @@
-<h1> Teachers Dashboard </h1>
+<h1><%= "#{current_user.full_name}'s Dashboard" %> </h1>
 
-<%= link_to "Create Classroom", new_classroom_path %>
 </br>
-<%= link_to "Create Quiz", new_quiz_path %>
 
-<% @classrooms.each do |classroom| %>
-	<%= classroom.name %>
+<%= link_to 'Create Classroom', new_classroom_path, class: 'btn btn-default' %>
+<%= link_to 'Create Quiz', new_quiz_path, class: 'btn btn-default' %>
+
+</br>
+</br>
+
+<% if current_user %>
+	<h2> Classes </h2>
+	<% @classrooms.each do |classroom| %>
+		<li><%= link_to classroom.name, classroom_path(classroom)%></li>
+	<% end %>
 <% end %>

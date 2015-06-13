@@ -1,16 +1,36 @@
 <h1><%= "#{current_user.full_name}'s Dashboard" %> </h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-6 text-right">
+		<%= link_to 'Create Classroom', new_classroom_path, class: 'btn btn-primary' %>
+		<%= link_to 'Create Quiz', new_quiz_path, class: 'btn btn-default' %>
+	</div>
+</div>
 
-</br>
 
-<%= link_to 'Create Classroom', new_classroom_path, class: 'btn btn-default' %>
-<%= link_to 'Create Quiz', new_quiz_path, class: 'btn btn-default' %>
-
-</br>
-</br>
+<h2> Your Classes </h2>
 
 <% if current_user %>
-	<h2> Classes </h2>
-	<% @classrooms.each do |classroom| %>
-		<li><%= link_to classroom.name, classroom_path(classroom)%></li>
-	<% end %>
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		<% @classrooms.each do |classroom| %>
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          <%= classroom.name %>
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+		      	<!-- List of quizzes for the classroom -->
+		      	<ul class="list-group">
+		      		<li class="list-group-item">Quiz number one <span class='badge'>Quizzes taken: 123</span></li>
+		      		<li class="list-group-item">Quiz number one</li>
+		      		<li class="list-group-item">Quiz number one</li>
+		      	</ul>
+		      </div>
+		    </div>
+		  </div>
+		<% end %>
+	</div>
 <% end %>

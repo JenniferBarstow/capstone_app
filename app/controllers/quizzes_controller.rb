@@ -19,7 +19,7 @@ class QuizzesController < ApplicationController
 		private 
 
 		def quiz_params
-			params.require(:quiz).permit(:question, :answer)
+			params.require(:quiz).permit(:question, :answer, :classroom_id)
 		end
 
 end

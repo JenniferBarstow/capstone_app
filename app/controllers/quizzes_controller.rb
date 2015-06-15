@@ -7,19 +7,23 @@ class QuizzesController < ApplicationController
 	
 	def new
 		@quiz = Quiz.new
-		@classroom = Classroom.new
+		@classroom = Classroom.find(params[:classroom_id])
 	end
 
 	def create
-		quiz = Quiz.new(quiz_params)
+		quiz = Quiz.new(quiz_params.merge(classroom_id: params[:classroom_id]))
 		quiz.save
-		redirect_to quizzes_path
-		end
+		redirect_to new_quiz_question_path(quiz)
+	end
 
-		private 
+	def show
+		@quiz = Quiz.find(params[:id])
+		@questions = @quiz.questions
+	end
 
-		def quiz_params
-			params.require(:quiz).permit(:question, :answer, :classroom_id)
-		end
+	private 
 
+	def quiz_params
+		params.require(:quiz).permit(:name)
+	end
 end

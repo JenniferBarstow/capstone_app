@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613022324) do
+ActiveRecord::Schema.define(version: 20150613030743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,18 @@ ActiveRecord::Schema.define(version: 20150613022324) do
   add_index "invites", ["classroom_id", "student_id"], name: "index_invites_on_classroom_id_and_student_id", using: :btree
   add_index "invites", ["student_id", "classroom_id"], name: "index_invites_on_student_id_and_classroom_id", using: :btree
 
+  create_table "questions", force: :cascade do |t|
+    t.integer "quiz_id"
+    t.string  "content"
+    t.json    "answers",   default: []
+    t.integer "answer_id"
+  end
+
   create_table "quizzes", force: :cascade do |t|
-    t.string   "question"
-    t.string   "answer"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "classroom_id"
+    t.string   "name"
   end
 
   create_table "students", force: :cascade do |t|

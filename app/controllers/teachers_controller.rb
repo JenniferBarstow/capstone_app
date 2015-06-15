@@ -2,7 +2,7 @@ class TeachersController < ApplicationController
 
 	def index
 		@teachers = Teacher.all
-		@classrooms = Classroom.all
+		@classrooms = current_user.classrooms
 		@quizzes = Quiz.all
 	end
 	

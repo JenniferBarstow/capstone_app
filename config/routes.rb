@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   
    root 'welcome#index'
    resources :teachers
-   resources :classrooms
-   resources :quizzes
+   resources :classrooms do
+      resources :quizzes
+   end
+
+   resources :quizzes, only: [] do 
+      resources :questions
+   end
+
    resources :students
 
    get 'sign-in', to: 'authentication#new'

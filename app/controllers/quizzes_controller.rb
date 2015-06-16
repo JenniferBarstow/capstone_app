@@ -21,6 +21,11 @@ class QuizzesController < ApplicationController
 		@questions = @quiz.questions
 	end
 
+	def edit
+		@classroom = Classroom.find(params[:classroom_id])
+		@quiz = Quiz.find(params[:id])
+	end
+
 	private 
 
 	def quiz_params

@@ -26,6 +26,23 @@ class QuestionsController < ApplicationController
 		@question = Question.find(params[:id])
 	end
 
+	def edit
+		@quiz = Quiz.find(params[:quiz_id])
+		@question = Question.find(params[:id])
+	end
+
+	def update
+		@quiz = Quiz.find(params[:quiz_id])
+		@question = Question.find(params[:id])
+		if @question.update(questions_params)
+			flash[:notice] = "Question successfully updated"
+			redirect_to classroom_quiz_path(@quiz.classroom, @quiz)
+		else
+			flash[:notice] = "Please fill out all fields"
+			render :edit
+		end
+	end
+
 	private
 
 	def questions_params

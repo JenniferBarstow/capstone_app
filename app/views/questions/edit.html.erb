@@ -1,0 +1,31 @@
+<h2 class='page-header'>Edit Questions for <%= @quiz.name %></h2>
+
+<%= form_for [@quiz, @question] do |f|  %>
+	<div class='form-group'>
+		<%= f.text_field :content, class: 'form-control', placeholder: "What is the question?!" %>
+	</div>
+
+	<% @question.answers.each_with_index do |answer, i| %>
+	
+		<div class='form-group'>
+			<div class="radio">
+				<div class='col-md-1'>
+			  	<input type="radio" name="question[answer_id]" class='form-control' value=<%= i %> checked=<%= @question.answer_id == i ? "checked" : false %>>
+				</div>
+				<div class='col-md-11'>
+					<input name='question[answers][]' class='form-control' value=<%= answer %>>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+
+	<div class='new-groups'>
+	</div>
+
+	<button id="add-answer" class='btn btn-warning'>Add Another Answer</button>
+
+	<div class='form-group'>
+		<%= f.submit "Save Question", class: "btn btn-primary" %>
+	</div>
+<% end %>

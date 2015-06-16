@@ -3,7 +3,17 @@
 
 <ol class='list-group'>
 	<% @questions.each do |question| %>
-		<li class='list-group-item'><%= question.content %><%= question.answers %><%= question.answer_id %></li>
+		<ul class='list-group'>
+			<li class='list-group-item list-group-item-info'><%= question.content %> <span class="pull-right"><%= link_to "Edit", edit_quiz_question_path(@quiz, question, class: "active") %></li>
+			<% question.answers.each_with_index do |answer, i| %>
+				<% if i == question.answer_id.to_i %>
+					<li class='list-group-item list-group-item-success'><%= answer %></li>
+				<% else %>
+					<li class='list-group-item'><%= answer %></li>
+				<% end %>
+			<% end %>
+		</ul>
+
 	<% end %>
 </ol>
 </table>

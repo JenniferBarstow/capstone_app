@@ -17,7 +17,11 @@
 		        	<span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
 		          <%= classroom.name %>
 		        </a>
-		        <%= link_to 'Create Quiz', new_classroom_quiz_path(classroom), class: 'pull-right' %>
+		        <div class="pull-right">
+			        <%= link_to 'Create Quiz', new_classroom_quiz_path(classroom) %>
+			        | 
+			        <%= link_to 'Delete Classroom', classroom_path(classroom), method: "delete" %>
+		        </div>
 		      </h4>
 		    </div>
 		    <div id=<%= "collapse#{classroom.id}" %> class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">

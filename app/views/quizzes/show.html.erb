@@ -1,19 +1,21 @@
+<%= link_to "Delete Quiz", quiz_path(@quiz), method: "delete", class: "btn btn-primary pull-right" %>
 <h2 class='page-header'><%= @quiz.name %></h2>
-	<table class="table table-bordered">
 
-<ol class='list-group'>
-	<% @questions.each do |question| %>
-		<ul class='list-group'>
-			<li class='list-group-item list-group-item-info'><%= question.content %> <span class="pull-right"><%= link_to "Edit", edit_quiz_question_path(@quiz, question, class: "active") %></li>
-			<% question.answers.each_with_index do |answer, i| %>
-				<% if i == question.answer_id.to_i %>
-					<li class='list-group-item list-group-item-success'><%= answer %></li>
-				<% else %>
-					<li class='list-group-item'><%= answer %></li>
+
+<table class="table table-bordered">
+	<ol class='list-group'>
+		<% @questions.each do |question| %>
+			<ul class='list-group'>
+				<li class='list-group-item list-group-item-info'><%= question.content %> <span class="pull-right"><%= link_to "Edit", edit_quiz_question_path(@quiz, question)%></li>
+				<% question.answers.each_with_index do |answer, i| %>
+					<% if i == question.answer_id.to_i %>
+						<li class='list-group-item list-group-item-success'><%= answer %></li>
+					<% else %>
+						<li class='list-group-item'><%= answer %></li>
+					<% end %>
 				<% end %>
-			<% end %>
-		</ul>
+			</ul>
 
-	<% end %>
-</ol>
+		<% end %>
+	</ol>
 </table>

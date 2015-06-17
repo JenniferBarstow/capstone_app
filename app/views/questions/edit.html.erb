@@ -6,14 +6,13 @@
 	</div>
 
 	<% @question.answers.each_with_index do |answer, i| %>
-	
 		<div class='form-group'>
 			<div class="radio">
 				<div class='col-md-1'>
-			  	<input type="radio" name="question[answer_id]" class='form-control' value=<%= i %> checked=<%= @question.answer_id == i ? "checked" : false %>>
+			  	<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>' checked=<%= @question.answer_id == i ? "checked" : false %>>
 				</div>
 				<div class='col-md-11'>
-					<input name='question[answers][]' class='form-control' value=<%= answer %>>
+					<input name='question[answers][]' class='form-control' value='<%= answer %>'>
 				</div>
 			</div>
 		</div>
@@ -23,9 +22,15 @@
 	<div class='new-groups'>
 	</div>
 
-	<button id="add-answer" class='btn btn-warning'>Add Another Answer</button>
+	<button id="add-answer" class='btn btn-warning'>Add Answer</button>
 
 	<div class='form-group'>
-		<%= f.submit "Save Question", class: "btn btn-primary" %>
+		<%= f.submit "Save", class: "btn btn-primary pull-right" %>
 	</div>
+
+	<%=link_to 'Delete', quiz_questions_path(@quiz, @questions), method: :delete, class: "glyphicon glyphicon-remove btn btn-danger pull-right", data: {confirm:
+		"Are you sure you want to delete the question?"} %>
+	
+
+
 <% end %>

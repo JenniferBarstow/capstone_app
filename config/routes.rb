@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :quizzes
    end
 
-   resources :quizzes, only: [] do 
+   resources :quizzes, only: [:destroy] do 
       resources :questions
    end
 

@@ -26,6 +26,11 @@ class QuizzesController < ApplicationController
 		@quiz = Quiz.find(params[:id])
 	end
 
+	def destroy
+		Quiz.delete(params[:id])
+		redirect_to teachers_path, notice: "Deleted Quiz"
+	end
+
 	private 
 
 	def quiz_params

@@ -1,0 +1,30 @@
+<div class='row'>
+	<div class='col-md-6'>
+		<% @questions.each do |question| %>
+			<div class='well well-lg question-block' data-question-id="<%= question.id %>">
+				<%= form_tag '', method: "post",  class: "question-form" do %>
+					<% question.answers.each_with_index do |answer, i| %>
+						<input type="radio" name="answer_id" class='form-control' value='<%= i %>'>
+						<%= answer %>
+					<% end %>
+					<%= submit_tag "Answer", class: "btn btn-primary pull-right" %>
+				<% end %>
+
+				<%= question.content %>
+			</div>
+		<% end %>
+	</div>
+
+	<div class='col-md-6'>
+		<div class='race-grid'>
+			<% 1.times do |i| %>
+				<div class='grid-col <%= "grid-col-#{i}"%>' data-col-id="<%= i %>">
+					<% 10.times do |i| %>
+						<div class='grid-row <%= "grid-row-#{i}"%>'>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

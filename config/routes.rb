@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
    resources :quizzes, only: [:destroy] do 
       resources :questions
+      get 'race', to: "races#show"
+   end
+
+   resources :questions, only: [] do
+      post 'answer', to: "races#answer"
    end
 
    resources :students
@@ -17,6 +22,4 @@ Rails.application.routes.draw do
    get 'sign-up', to: 'registrations#new'
    post 'sign-up', to: 'registrations#create'
    get 'sign-out', to: 'authentication#destroy'
-
-  
 end

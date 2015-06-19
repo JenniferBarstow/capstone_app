@@ -9,7 +9,11 @@
 		<div class='form-group'>
 			<div class="radio">
 				<div class='col-md-1'>
-			  	<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>'>
+					<% if @question.answer_id.to_i == i %>
+			  		<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>' checked=checked>
+			  	<% else %>
+			  		<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>'>
+			  	<% end %>
 				</div>
 				<div class='col-md-11'>
 					<input name='question[answers][]' class='form-control' value='<%= answer %>'>

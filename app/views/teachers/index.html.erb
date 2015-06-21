@@ -29,7 +29,7 @@
 		      	<!-- List of quizzes for the classroom -->
 		      	<ul class="list-group">
 		      		<% classroom.quizzes.each do |quiz| %>
-		      			<li class="list-group-item"><%= link_to quiz.name, classroom_quiz_path(classroom, quiz) %> <span class='badge'>Quizzes taken: <%= classroom.quizzes.count %> </span></li>
+		      			<li class="list-group-item"><%= link_to quiz.name, classroom_quiz_path(classroom, quiz) %> <span class='badge'>Quizzes taken: <%= quiz.student_quizzes.count %> </span></li>
 		      		<% end %>
 		      	</ul>
 		      </div>
@@ -38,3 +38,8 @@
 		<% end %>
 	</div>
 <% end %>
+
+<button type="button" class="btn btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+  Invite Students
+</button>

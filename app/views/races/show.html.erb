@@ -1,9 +1,11 @@
+<span class='quiz-id' style="display:none"><%= @quiz.id %></span>
 <div class='row'>
 	<div class='col-md-6'>
 		<% @questions.each do |question| %>
 			<div class='well well-lg question-block' data-question-id="<%= question.id %>">
 				<h3><%= question.content %> </h3>
 				<%= form_tag '', method: "post",  class: "question-form" do %>
+					<%= hidden_field_tag :student_id, current_user.id %>
 					<% question.answers.each_with_index do |answer, i| %>
 						<input type="radio" name="answer_id" class='form-control' value='<%= i %>'>
 						<%= answer %>
@@ -15,8 +17,9 @@
 	</div>
 
 	<div class='col-md-6'>
+		<h2 class="number-of-racers"></h2>
 		<div class='race-grid'>
-			<% 1.times do |i| %>
+			<% 9.times do |i| %>
 				<div class='grid-col <%= "grid-col-#{i}"%>' data-col-id="<%= i %>">
 					<% 10.times do |i| %>
 						<div class='grid-row <%= "grid-row-#{i}"%>'>

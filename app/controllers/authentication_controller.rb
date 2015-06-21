@@ -8,7 +8,7 @@ class AuthenticationController < ApplicationController
 		if @teacher && @teacher.authenticate(params[:password])
 			session[:user_id] = @teacher.id
 			redirect_to teachers_path
-			flash[:notice] = "You have successfully signed in!"
+			flash[:notice] = "Welcome!"
 		else 
 			redirect_to root_path
 		end
@@ -16,7 +16,7 @@ class AuthenticationController < ApplicationController
 
 	def destroy
 		session.clear
-		flash[:notice] = "You have successfully signed out"
+		flash[:notice] = "Thanks for visiting!"
 		redirect_to root_path
 	end
 

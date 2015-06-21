@@ -10,7 +10,7 @@ class TeachersController < ApplicationController
 		@teacher = Teacher.new(teacher_params)
 		if @teacher.save
 			session[:user_id] = @teacher.id
-			flash[:notice] = "You have successfully signed up!"
+			flash[:notice] = "Welcome!"
 			redirect_to teachers_path
 		else
 			redirect_to root_path

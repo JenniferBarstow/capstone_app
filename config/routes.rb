@@ -9,6 +9,7 @@ Rails.application.routes.draw do
    resources :quizzes, only: [:destroy] do 
       resources :questions
       get 'race', to: "races#show"
+      resources :student_quizzes, only: [:index]
    end
 
    resources :questions, only: [] do

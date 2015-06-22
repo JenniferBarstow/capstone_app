@@ -35,9 +35,13 @@ body {
 	color: #fff;
 	color: rgba(255,255,255,0.9);
 }
-label {
-	color: #fff;
-	color: rgba(255,255,255,0.9);
+// label {
+// 	color: #fff;
+// 	color: rgba(255,255,255,0.9);
+// }
+
+.form-group {
+	color: black;
 }
 
 .radio {
@@ -50,4 +54,14 @@ input[type='radio'] {
 }
 input[type='radio']:focus {
 	box-shadow:none;
+}
+
+.number-of-racers {
+	color: #fff;
+	color: rgba(255,255,255,0.9);
+}
+
+.player-number {
+	color: #fff;
+	color: rgba(255, 255, 255, 0.9);
 }

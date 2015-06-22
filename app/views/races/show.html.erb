@@ -16,11 +16,12 @@
 		<% end %>
 	</div>
 
+<h2 class="number-of-racers"></h2>
+<h2 class="player-number">You are player <%= @player_number %></h2>
+
 	<div class='col-md-6'>
-		<h2 class="number-of-racers"></h2>
-		<h2 class="player-number">You are player <%= @player_number %></h2>
 		<div class='race-grid'>
-			<% 9.times do |i| %>
+			<% 5.times do |i| %>
 				<div class='grid-col <%= "grid-col-#{i}"%>' data-col-id="<%= i %>">
 					<% 10.times do |i| %>
 						<div class='grid-row <%= "grid-row-#{i}"%>'>

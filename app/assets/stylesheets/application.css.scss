@@ -20,6 +20,7 @@
 
 body {
 	background: asset-url('chalkboard.jpg') repeat;
+	background-size: cover;
 }
 
 .jumbotron {
@@ -28,4 +29,25 @@ body {
 
 .pink {
 	background: pink;
+}
+
+.page-header {
+	color: #fff;
+	color: rgba(255,255,255,0.9);
+}
+label {
+	color: #fff;
+	color: rgba(255,255,255,0.9);
+}
+
+.radio {
+	overflow: hidden;
+	padding-left: 15px;
+}
+
+input[type='radio'] {
+	width: 20px;
+}
+input[type='radio']:focus {
+	box-shadow:none;
 }

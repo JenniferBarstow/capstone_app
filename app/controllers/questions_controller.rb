@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 	def new
 		@quiz = Quiz.find(params[:quiz_id])
 		@question = Question.new
+		@classroom = @quiz.classroom
 	end
 
 	def create

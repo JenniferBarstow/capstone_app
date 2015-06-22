@@ -19,15 +19,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#add-answer').click(function(event){
-		var numberOfInputs = $("input[name='question[answers][]']").length
-		var html = "<div class='form-group'><div class='radio'><div class='col-md-1'><input type='radio' name='question[answer_id]' class='form-control' value='";
-		html += numberOfInputs;
-		html += "'></div><div class='col-md-11'><input name='question[answers][]' placeholder='Please insert an answer' class='form-control'></div></div></div>";
-		$('.new-groups').append(html)
-		event.preventDefault();
-	});
-
 	var questions = $(".question-block");
 	var questionCounter = 0;
 	questions.hide();
@@ -40,11 +31,16 @@ $(document).ready(function() {
 		    values[field.name] = field.value;
 		});
 		// set submitted answer id
-		var answerId = values["answer_id"];
+		var submittedAnswerId = values["answer_id"];
 		var studentId = values["student_id"];
 
 		// get id for the question ID ajax request
 		var questionId = $(this.closest(".question-block")).data("question-id");
+		var correctAnswerId = $(this.closest(".question-block")).data("correct-answer-id");
+
+		if (submittedAnswerId == correctAnswerId) {
+			// cycle through
+		}
 
 		// toggling questions
 		$(questions[questionCounter]).hide();
@@ -55,7 +51,7 @@ $(document).ready(function() {
 			url: "/questions/" + questionId + "/answer",
 			type: "post",
 			dataType: "json",
-			data: {answer_id: answerId, student_id: studentId},
+			data: {answer_id: submittedAnswerId, student_id: studentId},
 			success: function(student_quizzes) {
 				$(".number-of-racers").text(student_quizzes.length + " Racers");
 				student_quizzes.forEach(function(student_quiz, i){
@@ -70,4 +66,14 @@ $(document).ready(function() {
 
 		e.preventDefault();
 	});
-})
+
+	$('#add-answer').click(function(event){
+		var numberOfInputs = $("input[name='question[answers][]']").length
+		var html = "<div class='form-group'><div class='radio'>";
+		html += "<div class='col-md-12'><input type='radio' name='question[answer_id]' class='form-control' value='";
+		html += numberOfInputs;
+		html += "'><input name='question[answers][]' placeholder='Please insert an answer' class='form-control'></div></div></div>";
+		$('.new-groups').append(html)
+		event.preventDefault();
+	});
+});

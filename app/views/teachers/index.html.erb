@@ -1,12 +1,10 @@
-<h1><%= "#{current_user.full_name}'s Dashboard" %> </h1>
+
 <div class="row">
-	<div class="col-md-6 col-md-offset-6 text-right">
-		<%= link_to 'Create Classroom', new_classroom_path, class: 'btn btn-primary' %>
-	</div>
+	<h1 class='page-header'><%= "#{current_user.full_name}'s Dashboard" %> <%= link_to 'Create Classroom', new_classroom_path, class: 'btn btn-primary text-right pull-right' %></h1>
 </div>
 
 
-<h2> Your Classes </h2>
+<h2 class='page-header'> Your Classes </h2>
 <% if current_user %>
 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		<% @classrooms.each do |classroom| %>

@@ -1,35 +1,35 @@
-<h2 class='page-header'>Edit Questions for <%= @quiz.name %></h2>
+<div class='col-md-8 col-md-offset-2'>
+	<h2 class='page-header'>Edit Questions for <%= @quiz.name %></h2>
 
-<%= form_for [@quiz, @question] do |f|  %>
-	<div class='form-group'>
-		<%= f.text_field :content, class: 'form-control', placeholder: "What is the question?!" %>
-	</div>
-
-	<% @question.answers.each_with_index do |answer, i| %>
+	<%= form_for [@quiz, @question] do |f|  %>
 		<div class='form-group'>
-			<div class="radio">
-				<div class='col-md-1'>
-					<% if @question.answer_id.to_i == i %>
-			  		<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>' checked=checked>
-			  	<% else %>
-			  		<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>'>
-			  	<% end %>
-				</div>
-				<div class='col-md-11'>
-					<input name='question[answers][]' class='form-control' value='<%= answer %>'>
+			<%= f.text_field :content, class: 'form-control', placeholder: "What is the question?!" %>
+		</div>
+
+		<% @question.answers.each_with_index do |answer, i| %>
+			<div class='form-group'>
+				<div class="radio">
+					<div class='col-md-12'>
+						<% if @question.answer_id.to_i == i %>
+				  		<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>' checked=checked>
+				  	<% else %>
+				  		<input type="radio" name="question[answer_id]" class='form-control' value='<%= i %>'>
+				  	<% end %>
+						<input name='question[answers][]' class='form-control' value='<%= answer %>'>
+					</div>
 				</div>
 			</div>
+
+		<% end %>
+
+		<div class='new-groups'>
+		</div>
+
+		<button id="add-answer" class='btn btn-warning'>Add Answer</button>
+
+		<div class='form-group'>
+			<%= f.submit "Save", class: "btn btn-primary pull-right" %>
 		</div>
 
 	<% end %>
-
-	<div class='new-groups'>
-	</div>
-
-	<button id="add-answer" class='btn btn-warning'>Add Answer</button>
-
-	<div class='form-group'>
-		<%= f.submit "Save", class: "btn btn-primary pull-right" %>
-	</div>
-
-<% end %>
+</div>

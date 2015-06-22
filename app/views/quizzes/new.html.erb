@@ -1,5 +1,7 @@
-<h2 class="page-header">New Quiz for <%= @classroom.name %></h2>
-<div class="well well-lg">
+<div class='col-md-4 col-md-offset-4'>
+	<h2 class="page-header">New Quiz for <%= @classroom.name %></h2>
+</div>
+<div class='col-md-4 col-md-offset-4 well well-secondary'>
 	<%= form_for [@classroom, @quiz] do |f| %>
 		<div class='form-group'>
 			<%= f.label :name %>

@@ -9,10 +9,10 @@ class ClassroomsController < ApplicationController
 	end
 
 	def create
-		@classroom = Classroom.new(classroom_params.merge(teacher_id: current_user.id))
+		@classroom = Classroom.new(classroom_params.merge(user_id: current_user.id))
 		if @classroom.save
 			flash[:notice] = "New Classroom Added!"
-			redirect_to teachers_path
+			redirect_to users_path
 		else
 			render :new
 		end
@@ -28,7 +28,7 @@ class ClassroomsController < ApplicationController
 
 	def destroy
 		Classroom.destroy(params[:id])
-		redirect_to teachers_path
+		redirect_to users_path
 	end
 
 	private

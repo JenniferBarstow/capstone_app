@@ -16,9 +16,12 @@
 		          <%= classroom.name %>
 		        </a>
 		        <div class="pull-right">
-			        <%= link_to 'Create Quiz', new_classroom_quiz_path(classroom) %>
-			        | 
-			        <%= link_to 'Delete Classroom', classroom_path(classroom), method: "delete" %>
+			        <%= link_to 'Create Quiz', new_classroom_quiz_path(classroom), class: 'btn btn-default btn-xs' %>
+			        <%# link_to 'Delete Classroom', classroom_path(classroom), method: "delete" %>
+			        <%= link_to new_classroom_student_invite_path(classroom), class: "btn btn-default btn-xs" do %>
+								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+								Invite Students
+							<% end %>
 		        </div>
 		      </h4>
 		    </div>
@@ -37,7 +40,3 @@
 	</div>
 <% end %>
 
-<button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-  Invite Students
-</button>

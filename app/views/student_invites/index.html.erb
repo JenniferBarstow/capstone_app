@@ -1,0 +1,18 @@
+<%= link_to "invite student", new_classroom_student_invite_path(@classroom) %>
+
+<table class='table table-striped'> 
+	<thead>
+		<tr>
+			<td>Email</td>
+			<td>Checked</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @student_invites.each do |student_invite| %>
+			<tr>
+				<td><%= student_invite.email %></td>
+				<td><%= student_invite.checked %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

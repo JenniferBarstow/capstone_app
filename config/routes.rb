@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   
    root 'welcome#index'
-   resources :teachers
+   resources :users
    resources :classrooms do
       resources :quizzes
+      resources :student_invites, only: [:new, :create, :index]
+      resources :enrolled_students, only: [:index, :create, :new]
    end
 
    resources :quizzes, only: [:destroy] do 

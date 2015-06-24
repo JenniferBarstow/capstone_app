@@ -3,7 +3,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  	<%= link_to "Join class", new_classroom_enrolled_student_path(@student_invite.classroom, email: @student_invite.email) %>
+  	<%= link_to "Join class", new_classroom_enrolled_student_url(@student_invite.classroom, email: @student_invite.email) %>
     <p>Thanks for joining and have a great day! Now sign in and do
 awesome things!</p>
   </body>

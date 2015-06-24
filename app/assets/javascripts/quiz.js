@@ -53,8 +53,15 @@ $(document).ready(function() {
 			dataType: "json",
 			data: {answer_id: submittedAnswerId, student_id: studentId},
 			success: function(student_quizzes) {
-				$(".number-of-racers").text(student_quizzes.length + " Racers");
-				student_quizzes.forEach(function(student_quiz, i){
+
+				var theWinner = student_quizzes.filter(function(obj) { return obj.score >= 10 });
+				if (theWinner.length > 0) {
+					$(".number-of-racers").text("Player " + theWinner[0].student_id + " Is the Winner");
+				} else {
+					$(".number-of-racers").text(student_quizzes.length + " Racers");
+				}
+				// $(".number-of-racers").text(student_quizzes.length + " Racers");
+				student_quizzes.forEach(function(student_quiz, i) {
 					var score = student_quiz.score;
 					// grid-col is based off of index the student_quiz is in the returned array
 					// grid-row is based off of score

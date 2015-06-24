@@ -30,10 +30,10 @@ class RacesController < ApplicationController
 
 		# find or create a student_quiz based on the current_user id sent through the params
 		student_quiz = StudentQuiz.find_or_create_by({student_id: params[:student_id], quiz_id: question.quiz_id})
-
 		# determine if answer is correct
 		if question.answer_id == submitted_answer_id.to_i
 			student_quiz.update_attributes(score: student_quiz.score + 1)
+			# if student has 10points, game is ova! Send a winner back to the client.
 		else
 
 		end

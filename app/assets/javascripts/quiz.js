@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	// on page load, populate the number of racers
 	var quizId = $('.quiz-id').text();
 	$.ajax({
 		url: "/quizzes/" + quizId + "/student_quizzes",
@@ -9,8 +8,6 @@ $(document).ready(function() {
 			$(".number-of-racers").text(student_quizzes.length + " Racers");
 			student_quizzes.forEach(function(student_quiz, i){
 				var score = student_quiz.score;
-				// grid-col is based off of index the student_quiz is in the returned array
-				// grid-row is based off of score
 				$(".grid-col-" + i + " .grid-row-" + (score - 1)).removeClass('pink');
 				$(".grid-col-" + i + " .grid-row-" + (score)).addClass('pink')
 			});
@@ -20,32 +17,31 @@ $(document).ready(function() {
 	});
 
 	var questions = $(".question-block");
-	var questionCounter = 0;
 	questions.hide();
-	$(questions[questionCounter]).show();
+	$(questions[0]).show();
 
-	$(".question-form").on("submit", function(e) {
-		// parse form inputs in a `values` object that behaves like params
+	$(document).on('submit', ".question-form", function(e) {
 		var values = {};
 		$.each($(this).serializeArray(), function(i, field) {
 		    values[field.name] = field.value;
 		});
-		// set submitted answer id
+
 		var submittedAnswerId = values["answer_id"];
 		var studentId = values["student_id"];
-
-		// get id for the question ID ajax request
 		var questionId = $(this.closest(".question-block")).data("question-id");
-		var correctAnswerId = $(this.closest(".question-block")).data("correct-answer-id");
+		var correctAnswerId = $(questions[0]).data("correct-answer-id");
 
 		if (submittedAnswerId == correctAnswerId) {
-			// cycle through
+			questions.first().remove(); 
+ 			questions = $(".question-block");
+			$(questions[0]).show();
+		} else {
+			$(questions[0]).hide();
+			var tmp = questions.first().remove();
+			$(".question-list").append(tmp);
+			questions = $(".question-block");
+			$(questions[0]).show();
 		}
-
-		// toggling questions
-		$(questions[questionCounter]).hide();
-		questionCounter += 1;
-		$(questions[questionCounter]).show();
 
 		$.ajax({
 			url: "/questions/" + questionId + "/answer",
@@ -53,18 +49,15 @@ $(document).ready(function() {
 			dataType: "json",
 			data: {answer_id: submittedAnswerId, student_id: studentId},
 			success: function(student_quizzes) {
-
 				var theWinner = student_quizzes.filter(function(obj) { return obj.score >= 10 });
 				if (theWinner.length > 0) {
 					$(".number-of-racers").text("Player " + theWinner[0].student_id + " Is the Winner");
 				} else {
 					$(".number-of-racers").text(student_quizzes.length + " Racers");
 				}
-				// $(".number-of-racers").text(student_quizzes.length + " Racers");
+
 				student_quizzes.forEach(function(student_quiz, i) {
 					var score = student_quiz.score;
-					// grid-col is based off of index the student_quiz is in the returned array
-					// grid-row is based off of score
 					$(".grid-col-" + i + " .grid-row-" + (score - 1)).removeClass('pink');
 					$(".grid-col-" + i + " .grid-row-" + (score)).addClass('pink');
 				});

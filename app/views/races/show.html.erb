@@ -1,6 +1,6 @@
 <span class='quiz-id' style="display:none"><%= @quiz.id %></span>
 <div class='row'>
-	<div class='col-md-6'>
+	<div class='col-md-6 question-list'>
 		<% @questions.each do |question| %>
 			<div class='well well-lg question-block' data-question-id="<%= question.id %>" data-correct-answer-id="<%= question.answer_id %>">
 				<h3><%= question.content %> </h3>

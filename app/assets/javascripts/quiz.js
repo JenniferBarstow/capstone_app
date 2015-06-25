@@ -49,17 +49,18 @@ $(document).ready(function() {
 			dataType: "json",
 			data: {answer_id: submittedAnswerId, student_id: studentId},
 			success: function(student_quizzes) {
-				var theWinner = student_quizzes.filter(function(obj) { return obj.score >= 10 });
-				if (theWinner.length > 0) {
-					$(".number-of-racers").hide();
-					$(".player-number").hide();
-					$(".winner-well").show();
-					$(".winner-text").text("Player " + theWinner[0].student_id + " is the Winner");
-				} else {
-					$(".number-of-racers").text(student_quizzes.length + " Racers");
-				}
 				student_quizzes.forEach(function(student_quiz, i) {
-					debugger;
+					if (student_quiz.score >= 10) {
+						debugger
+						$(".number-of-racers").hide();
+						$(".player-number").hide();
+						$(".winner-well").show();
+						$(".winner-text").text("Player " + (i+1) + " is the Winner");
+					}
+				});
+				$(".number-of-racers").text(student_quizzes.length + " Racers");
+
+				student_quizzes.forEach(function(student_quiz, i) {
 					var score = student_quiz.score;
 					$(".grid-col-" + i + " .grid-row").removeClass('pink');
 					$(".grid-col-" + i + " .grid-row-" + (score)).addClass('pink');

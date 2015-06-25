@@ -51,7 +51,6 @@ $(document).ready(function() {
 			success: function(student_quizzes) {
 				student_quizzes.forEach(function(student_quiz, i) {
 					if (student_quiz.score >= 10) {
-						debugger
 						$(".number-of-racers").hide();
 						$(".player-number").hide();
 						$(".winner-well").show();

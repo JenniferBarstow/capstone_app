@@ -58,10 +58,10 @@ $(document).ready(function() {
 				} else {
 					$(".number-of-racers").text(student_quizzes.length + " Racers");
 				}
-
 				student_quizzes.forEach(function(student_quiz, i) {
+					debugger;
 					var score = student_quiz.score;
-					$(".grid-col-" + i + " .grid-row-" + (score - 1)).removeClass('pink');
+					$(".grid-col-" + i + " .grid-row").removeClass('pink');
 					$(".grid-col-" + i + " .grid-row-" + (score)).addClass('pink');
 				});
 			}

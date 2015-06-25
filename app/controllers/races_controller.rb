@@ -16,8 +16,8 @@ class RacesController < ApplicationController
 		end
 
 		@player_number = 0
-		student_quizzes.each_with_index do |student_quiz, i|
-			if student_quiz.student_id = current_user.id
+		student_quizzes.order(:created_at).each_with_index do |student_quiz, i|
+			if student_quiz.student_id == current_user.id
 				@player_number = i + 1
 			end
 		end

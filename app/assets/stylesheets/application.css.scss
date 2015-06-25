@@ -28,20 +28,16 @@ body {
 }
 
 .pink {
-	background: asset-url('car.png');
-	width: 50px;
+	background: asset-url('car.png') no-repeat;
 	height: 50px;
 	background-size: 50px 50px;
+	background-color: white;
 }
 
 .page-header {
 	color: #fff;
 	color: rgba(255,255,255,0.9);
 }
-// label {
-// 	color: #fff;
-// 	color: rgba(255,255,255,0.9);
-// }
 
 .form-group {
 	color: black;
@@ -62,9 +58,29 @@ input[type='radio']:focus {
 .number-of-racers {
 	color: #fff;
 	color: rgba(255,255,255,0.9);
+	margin-right: 225px;
 }
 
 .player-number {
 	color: #fff;
 	color: rgba(255, 255, 255, 0.9);
+}
+
+.winner-text {
+	text-align: center;
+}
+.radio-answer {
+	float: left;
+	box-shadow: none;
+}
+label.answer-label {
+	display: block;
+	height: 20px;
+	margin: 25px 0 0 15px;
+}
+label.answer-label p {
+	padding: 10px 0 0 25px;
+}
+.well {
+	overflow: hidden;
 }

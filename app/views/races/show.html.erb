@@ -1,14 +1,21 @@
 <span class='quiz-id' style="display:none"><%= @quiz.id %></span>
 <div class='row'>
 	<div class='col-md-6 question-list'>
+		<h2 class="number-of-racers pull-left"></h2>
+		<div class="well winner-well" style='display: none;'>
+			<h2 class='winner-text'></h2>
+		</div>
+		<h2 class="player-number">You are player <%= @player_number %></h2>
 		<% @questions.each do |question| %>
 			<div class='well well-lg question-block' data-question-id="<%= question.id %>" data-correct-answer-id="<%= question.answer_id %>">
 				<h3><%= question.content %> </h3>
 				<%= form_tag '', method: "post",  class: "question-form" do %>
 					<%= hidden_field_tag :student_id, current_user.id %>
 					<% question.answers.each_with_index do |answer, i| %>
-						<input type="radio" name="answer_id" class='form-control' value='<%= i %>'>
-						<%= answer %>
+						<label name="answer_id" class='answer-label'>
+							<input type="radio" name="answer_id" class='form-control radio-answer' value='<%= i %>'>
+							<p><%= answer %></p>
+						</label>
 					<% end %>
 					<%= submit_tag "Answer", class: "btn btn-primary pull-right" %>
 				<% end %>
@@ -16,8 +23,6 @@
 		<% end %>
 	</div>
 
-<h2 class="number-of-racers"></h2>
-<h2 class="player-number">You are player <%= @player_number %></h2>
 
 	<div class='col-md-6'>
 		<div class='race-grid'>

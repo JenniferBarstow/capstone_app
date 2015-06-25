@@ -51,7 +51,6 @@ class QuestionsController < ApplicationController
     redirect_to quiz_questions_path(@quiz, @question)
 	end
 
-
 	private
 
 	def questions_params

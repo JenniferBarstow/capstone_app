@@ -1,5 +1,5 @@
 class RacesController < ApplicationController
-	# quizzes/:id/race
+
 	def show
 		@quiz = Quiz.find(params[:quiz_id])
 		student_quizzes = StudentQuiz.where(quiz_id: @quiz.id).order(:created_at)

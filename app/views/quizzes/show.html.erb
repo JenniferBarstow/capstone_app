@@ -2,7 +2,6 @@
 <%= link_to "Add Question", new_quiz_question_path(@quiz) %>
 <h2 class='page-header'><%= @quiz.name %></h2>
 
-
 <table class="table table-bordered">
 	<ol class='list-group'>
 		<% @questions.each do |question| %>

@@ -51,7 +51,10 @@ $(document).ready(function() {
 			success: function(student_quizzes) {
 				var theWinner = student_quizzes.filter(function(obj) { return obj.score >= 10 });
 				if (theWinner.length > 0) {
-					$(".number-of-racers").text("Player " + theWinner[0].student_id + " Is the Winner");
+					$(".number-of-racers").hide();
+					$(".player-number").hide();
+					$(".winner-well").show();
+					$(".winner-text").text("Player " + theWinner[0].student_id + " is the Winner");
 				} else {
 					$(".number-of-racers").text(student_quizzes.length + " Racers");
 				}
